@@ -1,0 +1,53 @@
+#!/bin/sh
+
+exists() {
+  local cmd="$@"
+  if which "$cmd" > /dev/null 2>&1; then
+    return 0
+  fi
+  return 1
+}
+
+run_verbosely() {
+  echo "$@" && eval "$@"
+}
+
+export DOTFILES_REPOSITORY=https://github.com/benijake/dotfiles.git
+export DOTFILES=~/.dotfiles
+
+download() {
+  if [ -d "$DOTFILES" ]; then
+    echo "$DOTFILES: already exists..."
+    run_verbosely rm "$DOTFILES"
+  fi
+
+  if exists "git"; then
+    git clone --recursive "$DOTFILES_REPOSITORY" "$DOTFILES"
+  else
+    exit 1
+  fi
+}
+
+deploy() {
+  if [ ! -d "$DOTFILES" ]; then
+    exit 1
+  fi
+  cd "$DOTFILES"
+  make deploy
+}
+
+initialize() {
+  echo "Initializing..."
+}
+
+install() {
+  download &&
+  deploy &&
+  initialize
+}
+
+main() {
+  install
+}
+
+main
