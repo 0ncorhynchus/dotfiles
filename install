@@ -18,7 +18,7 @@ export DOTFILES=~/.dotfiles
 download() {
   if [ -d "$DOTFILES" ]; then
     echo "$DOTFILES: already exists..."
-    run_verbosely rm "$DOTFILES"
+    run_verbosely rm -rf "$DOTFILES"
   fi
 
   if exists "git"; then
