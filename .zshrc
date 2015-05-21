@@ -2,7 +2,12 @@ autoload colors
 colors
 PROMPT="%{$fg[green]%}%n[%*]%(!.#.$) %{$reset_color%}"
 
-alias ls='ls --color=auto'
+case "$OSTYPE" in
+  darwin*)
+    alias ls='ls -G'
+  linux*)
+    alias ls='ls --color'
+esac
 
 if [ -e "/usr/bin/vim" ]; then
     EDITOR=/usr/bin/vim
