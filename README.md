@@ -1,1 +1,1 @@
-bash -c "$(curl -L https://raw.githubusercontent.com/benijake/dotfiles/master/install)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/benijake/dotfiles/master/install)"
