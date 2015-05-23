@@ -1,0 +1,5 @@
+XTerm*utf8              : 1
+XTerm*locale            : true
+XTerm*background        : black
+XTerm*foreground        : orange
+XTerm*selectToClipboard : true
