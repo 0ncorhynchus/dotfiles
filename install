@@ -24,6 +24,7 @@ download() {
   if exists "git"; then
     git clone --recursive "$DOTFILES_REPOSITORY" "$DOTFILES"
   else
+    echo 'Please install git...'
     exit 1
   fi
 }
