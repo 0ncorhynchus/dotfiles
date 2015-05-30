@@ -48,6 +48,8 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 
+NeoBundle 'kanchoku/tcvime' " 漢直用
+
 NeoBundle 'benijake/cosnt.vim'
 
 call neobundle#end()
@@ -73,3 +75,25 @@ augroup UndesirableSpaceHighlights
   autocmd VimEnter,WinEnter * match WhitespaceBraces /[\[(]\s\+[^[:blank:]]\|[^[:blank:]]\s\+[\])]/
   autocmd VimEnter,WinEnter * call matchadd("JISX0208Space", "　")
 augroup END
+
+
+" !-- T-Code --
+if has('keymap')
+  let tcvime_keymap = 'tcode'
+  imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
+  imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
+  imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
+  imap <silent> <unique> <C-K>/ <Plug>TcvimeIAsciiStart
+  " コントロールキーを伴わないモード切り替え: <Space>,でオンにする
+  imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
+  " <Space>;で後置型英字変換
+  imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+  nmap <silent> <unique> <C-K>k <Plug>TcvimeNKatakana
+  nmap <silent> <unique> <C-K>h <Plug>TcvimeNHiragana
+  nmap <silent> <unique> <C-K><Space> <Plug>TcvimeNConvert
+  vmap <silent> <unique> <C-K>k <Plug>TcvimeVKatakana
+  vmap <silent> <unique> <C-K>h <Plug>TcvimeVHiragana
+  vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
+  vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
+  vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
+endif
