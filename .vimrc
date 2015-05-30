@@ -23,6 +23,9 @@ let fortran_free_source=1
 autocmd FileType html       setl ts=2 sts=2 sw=2
 autocmd FileType css        setl ts=2 sts=2 sw=2
 autocmd FileType javascript setl ts=2 sts=2 sw=2
+autocmd FileType ruby       setl ts=2 sts=2 sw=2
+
+autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 
 
 " !-- NeoBundle --
