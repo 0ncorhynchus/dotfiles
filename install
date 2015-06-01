@@ -39,6 +39,7 @@ deploy() {
 
 initialize() {
   echo "Initializing..."
+  git config --global core.excludesfile "~/.gitignore_global"
 }
 
 install() {
