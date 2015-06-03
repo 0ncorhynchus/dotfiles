@@ -6,4 +6,4 @@ add_path () {
     fi
 }
 
-#add_path "PATH" "$HOME/.cabal/bin"
+add_path "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
