@@ -16,6 +16,9 @@ set smarttab
 set tabstop=4
 set expandtab
 
+let mapleader = ','
+noremap \ ,
+
 " !-- Fortran --
 let fortran_free_source=1
 
@@ -96,4 +99,9 @@ if has('keymap')
   vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
   vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
   vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
+endif
+
+" !-- Markdown preview with pandoc and lynx --
+if executable('pandoc') && executable('lynx')
+    map <Leader>x :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>
 endif
