@@ -16,10 +16,6 @@ set smarttab
 set tabstop=4
 set expandtab
 
-let mapleader = ','
-noremap \ ,
-inoremap <Leader><Space> <Leader><Space>
-
 " !-- Fortran --
 let fortran_free_source=1
 
@@ -92,9 +88,11 @@ if has('keymap')
   imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
   " <Space>;で後置型英字変換
   imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+
   nmap <silent> <unique> <C-K>k <Plug>TcvimeNKatakana
   nmap <silent> <unique> <C-K>h <Plug>TcvimeNHiragana
   nmap <silent> <unique> <C-K><Space> <Plug>TcvimeNConvert
+
   vmap <silent> <unique> <C-K>k <Plug>TcvimeVKatakana
   vmap <silent> <unique> <C-K>h <Plug>TcvimeVHiragana
   vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
