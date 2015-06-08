@@ -16,6 +16,8 @@ set smarttab
 set tabstop=4
 set expandtab
 
+let mapleader = "\<C-K>"
+
 " !-- Fortran --
 let fortran_free_source=1
 
@@ -80,6 +82,8 @@ augroup END
 " !-- T-Code --
 if has('keymap')
   let tcvime_keymap = 'tcode'
+  let tcvime_use_helptbl = 0
+  let tcvime#autohelp_ignore_pat = ""
   imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
   imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
   imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
