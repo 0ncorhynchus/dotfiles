@@ -18,6 +18,7 @@ set expandtab
 
 let mapleader = ','
 noremap \ ,
+inoremap <Leader><Space> <Leader><Space>
 
 " !-- Fortran --
 let fortran_free_source=1
