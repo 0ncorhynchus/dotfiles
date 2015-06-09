@@ -83,13 +83,10 @@ augroup END
 if has('keymap')
   let tcvime_keymap = 'tcode'
   let tcvime_use_helptbl = 0
-  let tcvime#autohelp_ignore_pat = ""
+  let g:tcvime#selectkeys = ['a','s','d','f','g','h','j','k','l']
   imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
   imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
   imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
-  imap <silent> <unique> <C-K>/ <Plug>TcvimeIAsciiStart
-  " コントロールキーを伴わないモード切り替え: <Space>,でオンにする
-  imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
   " <Space>;で後置型英字変換
   imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
 
@@ -102,6 +99,16 @@ if has('keymap')
   vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
   vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
   vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
+
+  " 後置型部首合成変換
+  lmap <silent> ala <Plug>TcvimeIBushu
+  " 前置型交ぜ書き変換の読み入力開始
+  lmap <silent> alj <Plug>TcvimeIStart
+  lmap <silent> ali <Plug>TcvimeIKatuyo
+  " 前置型交ぜ書き変換
+  lmap <silent> al<Space> <Plug>TcvimeIConvOrStart
+
+  lmap <silent> m0 <C-R>=tcvime#InputPostConvertStart(0)<CR>
 endif
 
 " !-- Markdown preview with pandoc and lynx --
