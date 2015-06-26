@@ -16,7 +16,10 @@ set smarttab
 set tabstop=4
 set expandtab
 
-let mapleader = "\<C-K>"
+" let mapleader = "\<C-K>"
+let mapleader = ","
+inoremap <Leader><Space> <Leader><Space>
+noremap \ ,
 
 " !-- Fortran --
 let fortran_free_source=1
@@ -114,5 +117,5 @@ endif
 
 " !-- Markdown preview with pandoc and lynx --
 if executable('pandoc') && executable('lynx')
-    map <Leader>x :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>
+    nnoremap <Leader>x :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>
 endif
