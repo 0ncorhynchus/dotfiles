@@ -82,6 +82,7 @@ augroup END
 " !-- T-Code --
 if has('keymap')
   let tcvime_keymap = 'tcode'
+  let tcvime_movecandto = 0
   let tcvime_use_helptbl = 0
   let g:tcvime#selectkeys = ['a','s','d','f','g','h','j','k','l']
   imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
