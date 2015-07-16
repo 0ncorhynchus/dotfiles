@@ -11,3 +11,6 @@ update:
 
 deploy:
 	@$(foreach f, $(DOTFILES_FILES), ln -sfnv $(abspath $(f)) $(HOME)/$(f);)
+
+clean:
+	@$(foreach f, $(DOTFILES_FILES), rm $(HOME)/$(f);)
