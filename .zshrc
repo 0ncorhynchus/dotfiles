@@ -1,6 +1,6 @@
 autoload colors
 colors
-PROMPT="%{$fg[green]%}%n[%*]%(!.#.$) %{$reset_color%}"
+PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
 
 case "$OSTYPE" in
   darwin*)
