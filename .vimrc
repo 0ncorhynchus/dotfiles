@@ -53,6 +53,8 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 
+NeoBundle 'rust-lang/rust.vim'
+
 NeoBundle 'kanchoku/tcvime' " 漢直用
 
 NeoBundle 'benijake/cosnt.vim'
