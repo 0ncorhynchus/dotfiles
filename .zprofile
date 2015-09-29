@@ -1,4 +1,4 @@
-add_path () {
+append_env () {
     path_var=$1
     directory=$2
     if [ -d "$directory" ]; then
@@ -6,4 +6,4 @@ add_path () {
     fi
 }
 
-add_path "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
+append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
