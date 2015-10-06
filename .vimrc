@@ -16,6 +16,9 @@ set smarttab
 set tabstop=4
 set expandtab
 
+set statusline=%F%m%r%h%w\ [TYPE=%Y]
+set laststatus=2
+
 " let mapleader = "\<C-K>"
 let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
@@ -55,7 +58,9 @@ NeoBundle 'gregsexton/gitv'
 
 NeoBundle 'rust-lang/rust.vim'
 
-NeoBundle 'kanchoku/tcvime' " 漢直用
+"NeoBundle 'kanchoku/tcvime' " 漢直用
+
+NeoBundle 'fuenor/im_control.vim'
 
 NeoBundle 'benijake/cosnt.vim'
 
@@ -85,37 +90,43 @@ augroup END
 
 
 " !-- T-Code --
-if has('keymap')
-  let tcvime_keymap = 'tcode'
-  let tcvime_movecandto = 0
-  let tcvime_use_helptbl = 0
-  let g:tcvime#selectkeys = ['a','s','d','f','g','h','j','k','l']
-  imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
-  imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
-  imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
-  " <Space>;で後置型英字変換
-  imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+"if has('keymap')
+"  let tcvime_keymap = 'tcode'
+"  let tcvime_movecandto = 0
+"  let tcvime_use_helptbl = 0
+"  let g:tcvime#selectkeys = ['a','s','d','f','g','h','j','k','l']
+"  imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
+"  imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
+"  imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
+"  " <Space>;で後置型英字変換
+"  imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+"
+"  nmap <silent> <unique> <C-K>k <Plug>TcvimeNKatakana
+"  nmap <silent> <unique> <C-K>h <Plug>TcvimeNHiragana
+"  nmap <silent> <unique> <C-K><Space> <Plug>TcvimeNConvert
+"
+"  vmap <silent> <unique> <C-K>k <Plug>TcvimeVKatakana
+"  vmap <silent> <unique> <C-K>h <Plug>TcvimeVHiragana
+"  vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
+"  vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
+"  vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
+"
+"  " 後置型部首合成変換
+"  lmap <silent> ala <Plug>TcvimeIBushu
+"  " 前置型交ぜ書き変換の読み入力開始
+"  lmap <silent> alj <Plug>TcvimeIStart
+"  lmap <silent> ali <Plug>TcvimeIKatuyo
+"  " 前置型交ぜ書き変換
+"  lmap <silent> al<Space> <Plug>TcvimeIConvOrStart
+"
+"  lmap <silent> m0 <C-R>=tcvime#InputPostConvertStart(0)<CR>
+"endif
 
-  nmap <silent> <unique> <C-K>k <Plug>TcvimeNKatakana
-  nmap <silent> <unique> <C-K>h <Plug>TcvimeNHiragana
-  nmap <silent> <unique> <C-K><Space> <Plug>TcvimeNConvert
-
-  vmap <silent> <unique> <C-K>k <Plug>TcvimeVKatakana
-  vmap <silent> <unique> <C-K>h <Plug>TcvimeVHiragana
-  vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
-  vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
-  vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
-
-  " 後置型部首合成変換
-  lmap <silent> ala <Plug>TcvimeIBushu
-  " 前置型交ぜ書き変換の読み入力開始
-  lmap <silent> alj <Plug>TcvimeIStart
-  lmap <silent> ali <Plug>TcvimeIKatuyo
-  " 前置型交ぜ書き変換
-  lmap <silent> al<Space> <Plug>TcvimeIConvOrStart
-
-  lmap <silent> m0 <C-R>=tcvime#InputPostConvertStart(0)<CR>
-endif
+" !-- Fcitx --
+let IM_CTRLMODE = 6
+inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
+" set timeout timeoutlen=3000 ttimeoutlen=100
+set statusline+=%{IMStatus('[日本語固定]')}
 
 " !-- Markdown preview with pandoc and lynx --
 if executable('pandoc') && executable('lynx')
