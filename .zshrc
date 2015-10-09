@@ -21,8 +21,3 @@ fi
 if [ -e "/usr/local/bin/direnv" ]; then
     eval "$(direnv hook zsh)"
 fi
-
-function fetch_pdb {
-    strId=$1
-    wget "http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=$strId" -O "$strId.pdb"
-}

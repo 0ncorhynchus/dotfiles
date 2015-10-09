@@ -1,0 +1,3 @@
+#!/bin/sh
+strId=$1
+wget "http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=$strId" -O "$strId.pdb"

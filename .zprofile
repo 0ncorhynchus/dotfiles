@@ -7,3 +7,4 @@ append_env () {
 }
 
 append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
+append_env "PATH" "$HOME/.dotfiles/bin"
