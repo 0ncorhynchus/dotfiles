@@ -1,5 +1,8 @@
 autoload colors
 colors
+autoload -U compinit
+compinit -u
+
 PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
 
 case "$OSTYPE" in
