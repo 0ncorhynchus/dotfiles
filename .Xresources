@@ -6,3 +6,4 @@ XTerm*locale            : true
 XTerm*background        : black
 XTerm*foreground        : orange
 XTerm*selectToClipboard : true
+XTerm*ximFont           : -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
