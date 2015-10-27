@@ -30,6 +30,7 @@ for dir in $HOME/local/*; do
     append_env "PYTHONPATH" "$dir/lib/python2.7/site-packages"
 done
 
+# for GROMACS >=5.0
 if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
     source /usr/local/gromacs/bin/GMXRC.zsh
 fi
