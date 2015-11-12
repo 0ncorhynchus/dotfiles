@@ -26,6 +26,7 @@ append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
 append_env "PATH" "$HOME/.dotfiles/bin"
 for dir in $HOME/local/*; do
     append_env "PATH" "$dir/bin"
+    append_env "LIBRARY_PATH" "$dir/lib"
     append_env "LD_LIBRARY_PATH" "$dir/lib"
     append_env "PYTHONPATH" "$dir/lib/python2.7/site-packages"
 done
