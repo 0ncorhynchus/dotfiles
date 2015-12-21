@@ -52,6 +52,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
+let g:vimfiler_as_default_explorer = 1
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
@@ -71,7 +72,6 @@ filetype plugin indent on
 
 NeoBundleCheck
 " !-- NeoBundle --
-
 
 " !-- Ecell --
 set list
