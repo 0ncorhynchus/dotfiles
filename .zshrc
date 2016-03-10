@@ -29,6 +29,7 @@ for dir in $HOME/local/*; do
     append_env "LIBRARY_PATH" "$dir/lib"
     append_env "LD_LIBRARY_PATH" "$dir/lib"
     append_env "PYTHONPATH" "$dir/lib/python2.7/site-packages"
+    append_env "PATH" "$HOME/.gem/ruby/2.3.0/bin"
 done
 
 # for GROMACS >=5.0
