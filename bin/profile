@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "1 argument is needed." 1>&2
+    exit 1
+else
+    executable=$1
+fi
+[ -z "$2" ] && sec0=1 || sec0=$2
+[ -z "$3" ] && sec1=10 || sec1=$3
+[ -z "$4" ] && output="profile_$(date '+%Y%m%d%H%M%S')" || output=$4
+
+if [ -e "$output" ]; then
+    echo "$output already exists." 1>&2
+    exit 1
+fi
+
+dir=$(dirname $output)
+[ ! -d $dir ] && mkdir -p $dir
+
+for sec in $(seq $sec0 $sec1); do
+    time=$(/usr/bin/time -f %U $executable $sec 2>&1)
+    echo "$sec, $time" >> $output
+done
