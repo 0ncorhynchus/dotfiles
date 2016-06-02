@@ -1,7 +1,7 @@
 XTerm*utf8              : 1
 XTerm*faceName          : DejaVu Sans Mono:style=book
 XTerm*faceNameDoublesize: IPAPGothic:style=Regular
-XTerm*faceSize          : 11
+XTerm*faceSize          : 10
 XTerm*locale            : true
 XTerm*background        : black
 XTerm*foreground        : orange
