@@ -4,6 +4,7 @@ autoload -U compinit
 compinit -u
 
 PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
+export EDITOR=vim
 
 case "$OSTYPE" in
   darwin*)
@@ -35,10 +36,6 @@ done
 # for GROMACS >=5.0
 if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
     source /usr/local/gromacs/bin/GMXRC.zsh
-fi
-
-if [ -e "/usr/bin/vim" ]; then
-    EDITOR=/usr/bin/vim
 fi
 
 if [ -e "/usr/local/bin/direnv" ]; then
