@@ -3,6 +3,8 @@ colors
 autoload -U compinit
 compinit -u
 
+bindkey -e
+
 PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
 export EDITOR=vim
 
@@ -41,3 +43,4 @@ fi
 if [ -e "/usr/local/bin/direnv" ]; then
     eval "$(direnv hook zsh)"
 fi
+
