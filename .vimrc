@@ -27,6 +27,12 @@ noremap \ ,
 " !-- Fortran --
 let fortran_free_source=1
 
+" !-- Common Lisp --
+set nocindent
+set lisp
+set showmatch
+let lisp_rainbow = 1
+
 " !-- FileType --
 autocmd FileType html       setl ts=2 sts=2 sw=2
 autocmd FileType css        setl ts=2 sts=2 sw=2
