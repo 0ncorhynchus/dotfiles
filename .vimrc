@@ -9,12 +9,9 @@ syntax on
 set hlsearch
 set number
 
-set autoindent
-set shiftwidth=4
-set smartindent
-set smarttab
-set tabstop=4
-set expandtab
+set autoindent smartindent
+set expandtab smarttab
+set shiftwidth=4 tabstop=4
 
 set statusline=%F%m%r%h%w\ [TYPE=%Y]
 set laststatus=2
@@ -24,21 +21,28 @@ let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
 
-" !-- Fortran --
-let fortran_free_source=1
+augroup Fortran
+  autocmd!
+  autocmd FileType fortran let fortran_free_source=1
+augroup END
 
-" !-- Common Lisp --
-set nocindent
-set lisp
-set showmatch
-let lisp_rainbow = 1
+augroup Lisp
+  autocmd!
+  autocmd FileType lisp setl nocindent
+  autocmd FileType lisp setl lisp
+  autocmd FileType lisp setl showmatch
+  autocmd FileType lisp let lisp_rainbow = 1
+augroup END
 
-" !-- FileType --
-autocmd FileType html       setl ts=2 sts=2 sw=2
-autocmd FileType css        setl ts=2 sts=2 sw=2
-autocmd FileType javascript setl ts=2 sts=2 sw=2
-autocmd FileType ruby       setl ts=2 sts=2 sw=2
-autocmd FileType yaml       setl ts=2 sts=2 sw=2
+augroup FileTypeIndent
+  autocmd!
+  autocmd FileType html       setl ts=2 sts=2 sw=2
+  autocmd FileType css        setl ts=2 sts=2 sw=2
+  autocmd FileType javascript setl ts=2 sts=2 sw=2
+  autocmd FileType ruby       setl ts=2 sts=2 sw=2
+  autocmd FileType yaml       setl ts=2 sts=2 sw=2
+  autocmd FileType vim        setl ts=2 sts=2 sw=2
+augroup END
 
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 
@@ -60,17 +64,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 let g:vimfiler_as_default_explorer = 1
-
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
-
 NeoBundle 'rust-lang/rust.vim'
-
-"NeoBundle 'kanchoku/tcvime' " 漢直用
 NeoBundle 'fuenor/im_control.vim'
-
 NeoBundle 'kovisoft/slimv'
-
 NeoBundle 'benijake/cosnt.vim'
 
 call neobundle#end()
