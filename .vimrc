@@ -64,6 +64,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 let g:vimfiler_as_default_explorer = 1
+nnoremap <Leader>e :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
+NeoBundle 't9md/vim-choosewin'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'rust-lang/rust.vim'
