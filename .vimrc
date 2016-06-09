@@ -67,8 +67,9 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'rust-lang/rust.vim'
 
 "NeoBundle 'kanchoku/tcvime' " 漢直用
-
 NeoBundle 'fuenor/im_control.vim'
+
+NeoBundle 'kovisoft/slimv'
 
 NeoBundle 'benijake/cosnt.vim'
 
