@@ -16,7 +16,6 @@ set shiftwidth=4 tabstop=4
 set statusline=%F%m%r%h%w\ [TYPE=%Y]
 set laststatus=2
 
-" let mapleader = "\<C-K>"
 let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
@@ -24,14 +23,6 @@ noremap \ ,
 augroup Fortran
   autocmd!
   autocmd FileType fortran let fortran_free_source=1
-augroup END
-
-augroup Lisp
-  autocmd!
-  autocmd FileType lisp setl nocindent
-  autocmd FileType lisp setl lisp
-  autocmd FileType lisp setl showmatch
-  autocmd FileType lisp let lisp_rainbow = 1
 augroup END
 
 augroup FileTypeIndent
@@ -63,9 +54,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
-let g:vimfiler_as_default_explorer = 1
-nnoremap <Leader>e :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
 NeoBundle 't9md/vim-choosewin'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'rust-lang/rust.vim'
@@ -80,6 +70,23 @@ filetype plugin indent on
 
 NeoBundleCheck
 " !-- NeoBundle --
+
+" !-- Tabpage --
+nnoremap [Tab] <Nop>
+nmap t [Tab]
+
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+nmap <silent> [Tab]c :tablast <bar> tabnew<CR>
+nmap <silent> [Tab]x :tabclose<CR>
+nmap <silent> [Tab]n :tabnext<CR>
+nmap <silent> [Tab]p :tabprevious<CR>
+
+" !-- VimFiler --
+let g:vimfiler_as_default_explorer = 1
+nnoremap <Leader>f :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
 
 " !-- Ecell --
 set list
