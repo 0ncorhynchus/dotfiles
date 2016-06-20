@@ -1,0 +1,23 @@
+#!/bin/bash
+
+directory=$1
+output=
+
+test -z "$directory" && exit 1
+test -d $directory || mkdir -p $directory
+
+old_ifs=$IFS
+IFS=
+while read line; do
+  name=$(echo $line | cut -c1-6)
+  if [ "$name" == "MODEL " ]; then
+    serial=$(echo $line | cut -c8-14) #-c11-14
+    output=$directory/${serial//[[:blank:]]/}.pdb
+    : > $output
+  elif [ "$name" == "ENDMDL" ]; then
+    output=
+  elif [ ! -z "$output" ]; then
+    echo $line >> $output
+  fi
+done
+IFS=$old_ifs

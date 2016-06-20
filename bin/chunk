@@ -1,0 +1,17 @@
+#!/bin/bash
+
+chunksize=$1
+count=0
+
+old_ifs=$IFS
+IFS=
+while read line; do
+  count=$((count+1))
+  echo "$line"
+  if [ "$count" -eq "$chunksize" ]; then
+    count=0
+    echo ""
+  fi
+done
+IFS=$old_ifs
+
