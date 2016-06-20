@@ -33,9 +33,11 @@ augroup FileTypeIndent
   autocmd FileType ruby       setl ts=2 sts=2 sw=2
   autocmd FileType yaml       setl ts=2 sts=2 sw=2
   autocmd FileType vim        setl ts=2 sts=2 sw=2
+  autocmd FileType sh         setl ts=2 sts=2 sw=2
 augroup END
 
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+autocmd BufNewFile,BufRead *.asd set filetype=lisp
 
 
 " !-- NeoBundle --
