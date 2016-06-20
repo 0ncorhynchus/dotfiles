@@ -26,7 +26,7 @@ append_env () {
 }
 
 append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
-append_env "PATH" "$HOME/.dotfiles/bin"
+append_env "PATH" "$HOME/.bin"
 for dir in $HOME/local/*; do
     append_env "PATH" "$dir/bin"
     append_env "LIBRARY_PATH" "$dir/lib"
