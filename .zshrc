@@ -36,11 +36,11 @@ for dir in $HOME/.local/*; do
 done
 
 # for GROMACS >=5.0
-if [ -e "/usr/.local/gromacs/bin/GMXRC.zsh" ]; then
-    source /usr/.local/gromacs/bin/GMXRC.zsh
+if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
+    source /usr/local/gromacs/bin/GMXRC.zsh
 fi
 
-if [ -e "/usr/.local/bin/direnv" ]; then
+if [ -e "/usr/local/bin/direnv" ]; then
     eval "$(direnv hook zsh)"
 fi
 
