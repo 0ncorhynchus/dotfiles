@@ -27,7 +27,7 @@ append_env () {
 
 append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
 append_env "PATH" "$HOME/.bin"
-for dir in $HOME/local/*; do
+for dir in $HOME/.local/*; do
     append_env "PATH" "$dir/bin"
     append_env "LIBRARY_PATH" "$dir/lib"
     append_env "LD_LIBRARY_PATH" "$dir/lib"
@@ -36,11 +36,11 @@ for dir in $HOME/local/*; do
 done
 
 # for GROMACS >=5.0
-if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
-    source /usr/local/gromacs/bin/GMXRC.zsh
+if [ -e "/usr/.local/gromacs/bin/GMXRC.zsh" ]; then
+    source /usr/.local/gromacs/bin/GMXRC.zsh
 fi
 
-if [ -e "/usr/local/bin/direnv" ]; then
+if [ -e "/usr/.local/bin/direnv" ]; then
     eval "$(direnv hook zsh)"
 fi
 
