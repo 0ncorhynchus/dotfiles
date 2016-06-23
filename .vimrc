@@ -16,6 +16,8 @@ set shiftwidth=4 tabstop=4
 set statusline=%F%m%r%h%w\ [TYPE=%Y]
 set laststatus=2
 
+set backspace=indent,eol,start
+
 let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
