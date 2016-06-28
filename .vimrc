@@ -34,10 +34,13 @@ augroup FileTypeIndent
   autocmd FileType yaml       setl ts=2 sts=2 sw=2
   autocmd FileType vim        setl ts=2 sts=2 sw=2
   autocmd FileType sh         setl ts=2 sts=2 sw=2
+  autocmd FileType lisp       setl ts=2 sts=2 sw=2
 augroup END
 
-autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
-autocmd BufNewFile,BufRead *.asd set filetype=lisp
+augroup FileTypeSetter
+  autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.asd set filetype=lisp
+augroup END
 
 
 " !-- NeoBundle --
@@ -61,8 +64,10 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'https://bitbucket.org/larsyencken/vim-drake-syntax.git'
 NeoBundle 'fuenor/im_control.vim'
 NeoBundle 'kovisoft/slimv'
+NeoBundle 'vitalk/vim-shebang'
 NeoBundle 'benijake/cosnt.vim'
 
 call neobundle#end()
@@ -89,6 +94,13 @@ nmap <silent> [Tab]p :tabprevious<CR>
 " !-- VimFiler --
 let g:vimfiler_as_default_explorer = 1
 nnoremap <Leader>f :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
+
+" !-- Slimv --
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+let g:lisp_rainbow = 1
+
+" !-- Shebang --
+AddShebangPattern! lisp ^#!.*/bin/sbcl\s\+--script\>
 
 " !-- Ecell --
 set list
