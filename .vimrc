@@ -70,6 +70,7 @@ NeoBundle 'https://bitbucket.org/larsyencken/vim-drake-syntax.git'
 NeoBundle 'fuenor/im_control.vim'
 NeoBundle 'kovisoft/slimv'
 NeoBundle 'vitalk/vim-shebang'
+NeoBundle '0ncorhynchus/ecell.vim'
 NeoBundle 'benijake/cosnt.vim'
 
 call neobundle#end()
@@ -103,21 +104,6 @@ let g:lisp_rainbow = 1
 
 " !-- Shebang --
 AddShebangPattern! lisp ^#!.*/bin/sbcl\s\+--script\>
-
-" !-- Ecell --
-set list
-set listchars=tab:>-,trail:~
-
-highlight WhitespaceEOL ctermbg=red guibg=red
-highlight WhitespaceBraces ctermbg=red guibg=red
-highlight SpecialKey ctermbg=red guibg=red
-highlight JISX0208Space term=underline ctermbg=red guibg=red
-augroup UndesirableSpaceHighlights
-  autocmd!
-  autocmd VimEnter,WinEnter * match WhitespaceEOL /\s\+$/
-  autocmd VimEnter,WinEnter * match WhitespaceBraces /[\[(]\s\+[^[:blank:]]\|[^[:blank:]]\s\+[\])]/
-  autocmd VimEnter,WinEnter * call matchadd("JISX0208Space", "　")
-augroup END
 
 " !-- Markdown preview with pandoc and lynx --
 if executable('pandoc') && executable('lynx')
