@@ -17,6 +17,8 @@ case "$OSTYPE" in
     ;;
 esac
 
+alias sudo='sudo -E'
+
 append_env () {
     path_var=$1
     directory=$2
