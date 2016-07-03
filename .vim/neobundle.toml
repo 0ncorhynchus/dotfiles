@@ -1,0 +1,41 @@
+[[plugins]]
+repository = 'Shougo/unite.vim'
+
+[[plugins]]
+repository = 'Shougo/vimfiler'
+
+[[plugins]]
+repository = 't9md/vim-choosewin'
+
+[[plugins]]
+repository = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+
+[[plugins]]
+repository = 'gregsexton/gitv'
+
+[[plugins]]
+repository = 'rust-lang/rust.vim'
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+
+[[plugins]]
+repository = 'https://bitbucket.org/larsyencken/vim-drake-syntax.git'
+
+[[plugins]]
+repository = 'fuenor/im_control.vim'
+
+[[plugins]]
+repository = 'kovisoft/slimv'
+
+[[plugins]]
+repository = 'vitalk/vim-shebang'
+
+[[plugins]]
+repository = '0ncorhynchus/ecell.vim'
+
+[[plugins]]
+repository = 'benijake/cosnt.vim'

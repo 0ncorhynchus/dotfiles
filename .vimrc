@@ -22,60 +22,24 @@ let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
 
-augroup Fortran
-  autocmd!
-  autocmd FileType fortran let fortran_free_source=1
-augroup END
-
-augroup FileTypeIndent
-  autocmd!
-  autocmd FileType html       setl ts=2 sts=2 sw=2
-  autocmd FileType css        setl ts=2 sts=2 sw=2
-  autocmd FileType javascript setl ts=2 sts=2 sw=2
-  autocmd FileType ruby       setl ts=2 sts=2 sw=2
-  autocmd FileType yaml       setl ts=2 sts=2 sw=2
-  autocmd FileType vim        setl ts=2 sts=2 sw=2
-  autocmd FileType sh         setl ts=2 sts=2 sw=2
-  autocmd FileType lisp       setl ts=2 sts=2 sw=2
-augroup END
-
-augroup FileTypeSetter
-  autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
-  autocmd BufNewFile,BufRead *.asd set filetype=lisp
-augroup END
-
 
 " !-- NeoBundle --
 if has('vim_starting')
   set nocompatible               " Be iMproved
-
-  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+if neobundle#load_cache()
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 't9md/vim-choosewin'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'https://bitbucket.org/larsyencken/vim-drake-syntax.git'
-NeoBundle 'fuenor/im_control.vim'
-NeoBundle 'kovisoft/slimv'
-NeoBundle 'vitalk/vim-shebang'
-NeoBundle '0ncorhynchus/ecell.vim'
-NeoBundle 'benijake/cosnt.vim'
+  call neobundle#load_toml('~/.vim/neobundle.toml')
+  NeoBundleSaveCache
+endif
 
 call neobundle#end()
 
-" Required:
 filetype plugin indent on
 
 NeoBundleCheck
