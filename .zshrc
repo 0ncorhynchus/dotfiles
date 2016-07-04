@@ -13,9 +13,11 @@ case "$OSTYPE" in
     alias ls='ls -G'
     ;;
   linux*)
-    alias ls='ls --color'
+    alias ls='ls --color -h --group-directories-first'
     ;;
 esac
+
+alias sudo='sudo -E'
 
 append_env () {
     path_var=$1
@@ -28,12 +30,12 @@ append_env () {
 append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
 append_env "PATH" "$HOME/.roswell/bin"
 append_env "PATH" "$HOME/.bin"
+append_env "PATH" "$HOME/.gem/ruby/2.3.0/bin"
 for dir in $HOME/.local/*; do
     append_env "PATH" "$dir/bin"
     append_env "LIBRARY_PATH" "$dir/lib"
     append_env "LD_LIBRARY_PATH" "$dir/lib"
     append_env "PYTHONPATH" "$dir/lib/python3.5/site-packages"
-    append_env "PATH" "$HOME/.gem/ruby/2.3.0/bin"
 done
 
 # for GROMACS >=5.0

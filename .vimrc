@@ -16,6 +16,8 @@ set shiftwidth=4 tabstop=4
 set statusline=%F%m%r%h%w\ [TYPE=%Y]
 set laststatus=2
 
+set backspace=indent,eol,start
+
 let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
@@ -34,10 +36,13 @@ augroup FileTypeIndent
   autocmd FileType yaml       setl ts=2 sts=2 sw=2
   autocmd FileType vim        setl ts=2 sts=2 sw=2
   autocmd FileType sh         setl ts=2 sts=2 sw=2
+  autocmd FileType lisp       setl ts=2 sts=2 sw=2
 augroup END
 
-autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
-autocmd BufNewFile,BufRead *.asd set filetype=lisp
+augroup FileTypeSetter
+  autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.asd set filetype=lisp
+augroup END
 
 
 " !-- NeoBundle --
@@ -61,8 +66,11 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'https://bitbucket.org/larsyencken/vim-drake-syntax.git'
 NeoBundle 'fuenor/im_control.vim'
 NeoBundle 'kovisoft/slimv'
+NeoBundle 'vitalk/vim-shebang'
+NeoBundle '0ncorhynchus/ecell.vim'
 NeoBundle 'benijake/cosnt.vim'
 
 call neobundle#end()
@@ -90,20 +98,12 @@ nmap <silent> [Tab]p :tabprevious<CR>
 let g:vimfiler_as_default_explorer = 1
 nnoremap <Leader>f :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
 
-" !-- Ecell --
-set list
-set listchars=tab:>-,trail:~
+" !-- Slimv --
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+let g:lisp_rainbow = 1
 
-highlight WhitespaceEOL ctermbg=red guibg=red
-highlight WhitespaceBraces ctermbg=red guibg=red
-highlight SpecialKey ctermbg=red guibg=red
-highlight JISX0208Space term=underline ctermbg=red guibg=red
-augroup UndesirableSpaceHighlights
-  autocmd!
-  autocmd VimEnter,WinEnter * match WhitespaceEOL /\s\+$/
-  autocmd VimEnter,WinEnter * match WhitespaceBraces /[\[(]\s\+[^[:blank:]]\|[^[:blank:]]\s\+[\])]/
-  autocmd VimEnter,WinEnter * call matchadd("JISX0208Space", "　")
-augroup END
+" !-- Shebang --
+AddShebangPattern! lisp ^#!.*/bin/sbcl\s\+--script\>
 
 " !-- Markdown preview with pandoc and lynx --
 if executable('pandoc') && executable('lynx')
