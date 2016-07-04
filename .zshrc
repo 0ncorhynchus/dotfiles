@@ -26,12 +26,13 @@ append_env () {
 }
 
 append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
+append_env "PATH" "$HOME/.roswell/bin"
 append_env "PATH" "$HOME/.bin"
 for dir in $HOME/.local/*; do
     append_env "PATH" "$dir/bin"
     append_env "LIBRARY_PATH" "$dir/lib"
     append_env "LD_LIBRARY_PATH" "$dir/lib"
-    append_env "PYTHONPATH" "$dir/lib/python2.7/site-packages"
+    append_env "PYTHONPATH" "$dir/lib/python3.5/site-packages"
     append_env "PATH" "$HOME/.gem/ruby/2.3.0/bin"
 done
 
