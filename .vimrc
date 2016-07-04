@@ -63,7 +63,7 @@ let g:vimfiler_as_default_explorer = 1
 nnoremap <Leader>f :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
 
 " !-- Slimv --
-let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+let g:slimv_swank_cmd = '! tmux new-session -s REPL-ROSWELL -d "ros run -l ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 let g:lisp_rainbow = 1
 
 " !-- Shebang --
