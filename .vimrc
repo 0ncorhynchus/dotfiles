@@ -66,9 +66,6 @@ nnoremap <Leader>f :VimFilerExplore -split -winwidth=40 -find -no-quit<cr>
 let g:slimv_swank_cmd = '! tmux new-session -s REPL-ROSWELL -d "ros run -l ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 let g:lisp_rainbow = 1
 
-" !-- Shebang --
-AddShebangPattern! lisp ^#!.*/bin/sbcl\s\+--script\>
-
 " !-- Markdown preview with pandoc and lynx --
 if executable('pandoc') && executable('lynx')
     nnoremap <Leader>x :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>

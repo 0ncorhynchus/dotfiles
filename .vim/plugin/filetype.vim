@@ -19,5 +19,6 @@ augroup FileTypeSetter
   autocmd!
   autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
   autocmd BufNewFile,BufRead *.asd set filetype=lisp
+  autocmd BufNewFile,BufRead *.ros set filetype=lisp
 augroup END
 

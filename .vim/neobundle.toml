@@ -31,8 +31,8 @@ repository = 'fuenor/im_control.vim'
 [[plugins]]
 repository = 'kovisoft/slimv'
 
-[[plugins]]
-repository = 'vitalk/vim-shebang'
+# [[plugins]]
+# repository = 'vitalk/vim-shebang'
 
 [[plugins]]
 repository = '0ncorhynchus/ecell.vim'
