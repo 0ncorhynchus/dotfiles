@@ -1,0 +1,48 @@
+#!/bin/bash
+
+usage_exit() {
+  echo "Usage: $0 [-p port] [up|down]" 1>&2
+  exit 1
+}
+
+cidfile=.serve
+
+port=80
+while getopts p: OPT
+do
+  case $OPT in
+    p)
+      port=$OPTARG
+      ;;
+    \?) usage_exit
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+if [ -z "$1" ]; then
+  usage_exit
+elif [ "$1" = up ]; then
+  if [ -e "$cidfile" ]; then
+    echo "Already running" 1>&2
+    exit 4
+  else
+    docker run -d -v $(pwd):/usr/share/nginx/html:ro -p $port:80 nginx > $cidfile &&
+    echo -e "Start up successfully in localhost:$port"
+  fi
+elif [ "$1" = down ]; then
+  if [ -r "$cidfile" ]; then
+    cid=$(head -n 1 $cidfile)
+    docker stop $cid > /dev/null && \
+    docker rm $cid > /dev/null && \
+    rm $cidfile && \
+    echo "Shut down successfully"
+  else
+    echo "Cannot read: $cidfile" 1>&2
+    exit 3
+  fi
+else
+  echo "Unknown command: $1" 1>&2
+  exit 2
+fi
