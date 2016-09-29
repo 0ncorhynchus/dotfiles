@@ -35,6 +35,9 @@ repository = 'kovisoft/slimv'
 # repository = 'vitalk/vim-shebang'
 
 [[plugins]]
+repository = 'vim-scripts/cmake.vim-syntax'
+
+[[plugins]]
 repository = '0ncorhynchus/ecell.vim'
 
 [[plugins]]
