@@ -18,6 +18,7 @@ case "$OSTYPE" in
 esac
 
 alias sudo='sudo -E'
+alias tnew='tmux new -s $(basename $(pwd))'
 
 append_env () {
     path_var=$1
