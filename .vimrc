@@ -22,41 +22,33 @@ let mapleader = ","
 inoremap <Leader><Space> <Leader><Space>
 noremap \ ,
 
-
-" !-- NeoBundle --
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+" !-- dein.vim --
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-if neobundle#load_cache()
-  NeoBundleFetch 'Shougo/neobundle.vim'
+  let g:rc_dir    = expand('~/.vim/rc')
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-  call neobundle#load_toml('~/.vim/neobundle.toml')
-  NeoBundleSaveCache
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
 endif
 
-call neobundle#end()
-
-filetype plugin indent on
-
-NeoBundleCheck
-" !-- NeoBundle --
-
-" !-- Tabpage --
-nnoremap [Tab] <Nop>
-nmap t [Tab]
-
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
-endfor
-
-nmap <silent> [Tab]c :tablast <bar> tabnew<CR>
-nmap <silent> [Tab]x :tabclose<CR>
-nmap <silent> [Tab]n :tabnext<CR>
-nmap <silent> [Tab]p :tabprevious<CR>
+if dein#check_install()
+  call dein#install()
+endif
 
 " !-- VimFiler --
 let g:vimfiler_as_default_explorer = 1
