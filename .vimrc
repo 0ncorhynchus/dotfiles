@@ -5,9 +5,16 @@ filetype plugin indent off
 
 colorscheme desert
 set encoding=utf-8
-syntax on
+
+let fortran_free_source=1
+let fortran_fold=1
+let fortran_fold_conditionals=1
+let fortran_fold_multilinecomments=1
+let fortran_do_enddo=1
+
 set hlsearch
 set number
+syntax on
 
 set autoindent smartindent
 set expandtab smarttab

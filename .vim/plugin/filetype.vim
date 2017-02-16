@@ -1,10 +1,6 @@
-augroup Fortran
-  autocmd!
-  autocmd FileType fortran let fortran_free_source=1
-augroup END
-
 augroup FileTypeIndent
   autocmd!
+  autocmd FileType fortran    setl ts=2 sts=2 sw=2
   autocmd FileType html       setl ts=2 sts=2 sw=2
   autocmd FileType css        setl ts=2 sts=2 sw=2
   autocmd FileType javascript setl ts=2 sts=2 sw=2
