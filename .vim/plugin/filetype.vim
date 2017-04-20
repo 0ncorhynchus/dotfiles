@@ -8,6 +8,7 @@ augroup FileTypeIndent
   autocmd FileType yaml       setl ts=2 sts=2 sw=2
   autocmd FileType vim        setl ts=2 sts=2 sw=2
   autocmd FileType sh         setl ts=2 sts=2 sw=2
+  autocmd FileType zsh        setl ts=2 sts=2 sw=2
   autocmd FileType lisp       setl ts=2 sts=2 sw=2
 augroup END
 
