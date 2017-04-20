@@ -21,8 +21,8 @@ alias sudo='sudo -E'
 alias tnew='tmux new -s $(basename $(pwd))'
 
 append_env () {
-  path_var=$1
-  dir=$2
+  local path_var=$1
+  local dir=$2
   eval "path_dirs=(\"\${(@s/:/)${path_var}}\")"
   if [ ${path_dirs[(i)${dir}]} -gt ${#path_dirs} -a -d "${dir}" ]; then
     eval "export ${path_var}=${dir}:\$${path_var}"
