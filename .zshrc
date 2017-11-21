@@ -48,6 +48,6 @@ if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
 fi
 
 # for direnv
-if [ -e $(which direnv) ]; then
+if [ -e "$(which direnv 2> /dev/null)" ]; then
   eval "$(direnv hook zsh)"
 fi
