@@ -6,7 +6,6 @@ compinit -u
 bindkey -e
 
 PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
-export EDITOR=vim
 
 case "$OSTYPE" in
   darwin*)
@@ -20,31 +19,26 @@ esac
 alias sudo='sudo -E'
 alias tnew='tmux new -s $(basename $(pwd))'
 
-append_env () {
-  local path_var=$1
-  local dir=$2
-  eval "path_dirs=(\"\${(@s/:/)${path_var}}\")"
-  if [ ${path_dirs[(i)${dir}]} -gt ${#path_dirs} -a -d "${dir}" ]; then
-    eval "export ${path_var}=${dir}:\$${path_var}"
+function push_env() {
+  if [ -d "$2" ]; then
+    eval "export $1=$2:\$$1"
   fi
 }
 
-append_env "PATH" "$HOME/.cabal/bin" # required for pandoc, etc...
-append_env "PATH" "$HOME/.roswell/bin"
-append_env "PATH" "$HOME/.bin"
-if [ -d $HOME/.local ]; then
-  for dir in $HOME/.local/*; do
-    append_env "PATH" "$dir/bin"
-    append_env "LIBRARY_PATH" "$dir/lib"
-    append_env "LD_LIBRARY_PATH" "$dir/lib"
-    append_env "PYTHONPATH" "$dir/lib/python3.5/site-packages"
-  done
-fi
-append_env "PATH" "$HOME/.cargo/bin"
+push_env PATH $HOME/anaconda3/bin
+push_env PATH $HOME/miniconda3/bin
 
-# for GROMACS >=5.0
-if [ -e "/usr/local/gromacs/bin/GMXRC.zsh" ]; then
-  source /usr/local/gromacs/bin/GMXRC.zsh
+pyver=`python -V 2>&1 | sed -e 's/Python \([0-9]\+\.[0-9]\+\).*/\1/'`
+pydir=python${pyver}
+
+myopt=$HOME/opt
+if [ -d ${myopt} ]; then
+  for dir in ${myopt}/*; do
+    push_env PATH            ${dir}/bin
+    push_env LIBRARY_PATH    ${dir}/lib
+    push_env LD_LIBRARY_PATH ${dir}/lib
+    push_env PYTHONPATH      ${dir}/lib/${pydir}/site-packages
+  done
 fi
 
 # for direnv
