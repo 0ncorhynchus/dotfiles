@@ -26,6 +26,7 @@ fi
 
 path=($HOME/.cargo/bin(N-/)
       $HOME/.cabal/bin(N-/)
+      $HOME/go/bin(N-/)
       $HOME/anaconda3/bin(N-/)
       $HOME/miniconda3/bin(N-/)
       ${path})
@@ -47,6 +48,16 @@ function set_opt_path() {
 
 set_opt_path
 unfunction set_opt_path
+
+function source_if_exist() {
+  if [ -e "$1" ]; then
+    source "$1"
+  fi
+}
+
+source_if_exist /usr/local/gromacs/bin/GMXRC.zsh
+
+unfunction source_if_exist
 
 # for direnv
 if [ -e "$(which direnv 2> /dev/null)" ]; then
