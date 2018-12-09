@@ -29,6 +29,7 @@ path=($HOME/.cargo/bin(N-/)
       $HOME/go/bin(N-/)
       $HOME/anaconda3/bin(N-/)
       $HOME/miniconda3/bin(N-/)
+      $(gem environment gemdir)/bin(N-/)
       ${path})
 
 function set_opt_path() {
@@ -48,6 +49,10 @@ function set_opt_path() {
 
 set_opt_path
 unfunction set_opt_path
+
+unset ld_library_path
+unset library_path
+unset pythonpath
 
 function source_if_exist() {
   if [ -e "$1" ]; then

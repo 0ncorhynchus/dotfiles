@@ -10,6 +10,7 @@ augroup FileTypeIndent
   autocmd FileType sh         setl ts=2 sts=2 sw=2
   autocmd FileType zsh        setl ts=2 sts=2 sw=2
   autocmd FileType lisp       setl ts=2 sts=2 sw=2
+  autocmd FileType tex        setl ts=2 sts=2 sw=2
 augroup END
 
 augroup FileTypeSetter
