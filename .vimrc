@@ -71,3 +71,6 @@ let g:lisp_rainbow = 1
 if executable('pandoc') && executable('lynx')
     nnoremap <Leader>x :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>
 endif
+
+" !-- Clang-Format --
+autocmd FileType c,cpp ClangFormatAutoEnable

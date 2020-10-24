@@ -38,6 +38,9 @@ repo = 'vim-scripts/cmake.vim-syntax'
 repo = 'mustache/vim-mustache-handlebars'
 
 [[plugins]]
+repo = 'rhysd/vim-clang-format'
+
+[[plugins]]
 repo = '0ncorhynchus/ecell.vim'
 
 [[plugins]]
