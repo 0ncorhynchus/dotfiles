@@ -2,9 +2,6 @@
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'Shougo/vimfiler'
-
-[[plugins]]
 repo = 't9md/vim-choosewin'
 
 [[plugins]]
