@@ -6,6 +6,7 @@ compinit -u
 bindkey -e
 
 PROMPT="%{$fg[green]%}%n@%m$ %{$reset_color%}"
+export TERM=xterm-256color
 
 export EDITOR=vim
 
