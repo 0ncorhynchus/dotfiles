@@ -45,3 +45,10 @@ repo = '0ncorhynchus/ecell.vim'
 
 [[plugins]]
 repo = 'benijake/cosnt.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+    set background=dark
+    autocmd VimEnter * nested colorscheme hybrid
+'''
