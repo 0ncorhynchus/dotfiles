@@ -74,3 +74,6 @@ endif
 
 " !-- Clang-Format --
 autocmd FileType c,cpp ClangFormatAutoEnable
+
+" !-- rustfmt --
+let g:rustfmt_autosave = 1
