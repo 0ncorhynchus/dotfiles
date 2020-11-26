@@ -25,12 +25,16 @@ if [ -z "$pythonpath" ]; then
   export PYTHONPATH
 fi
 
+if type "gem" > /dev/null; then
+  path=($(gem environment gemdir)/bin
+        ${path})
+fi
+
 path=($HOME/.cargo/bin(N-/)
       $HOME/.cabal/bin(N-/)
       $HOME/go/bin(N-/)
       $HOME/anaconda3/bin(N-/)
       $HOME/miniconda3/bin(N-/)
-      $(gem environment gemdir)/bin(N-/)
       ${path})
 
 function set_opt_path() {
