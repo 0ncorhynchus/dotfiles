@@ -30,6 +30,11 @@ if type "gem" > /dev/null; then
         ${path})
 fi
 
+NPM_PACKAGES=$HOME/.npm-packages
+if [ -d "$NPM_PACKAGES" ]; then
+  path=($NPM_PACKAGES/bin(N-/) ${path})
+fi
+
 path=($HOME/.cargo/bin(N-/)
       $HOME/.cabal/bin(N-/)
       $HOME/go/bin(N-/)
