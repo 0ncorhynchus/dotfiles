@@ -1,4 +1,0 @@
-layout_haskell() {
-    [ -d .cabal-sandbox ] || cabal sandbox init
-    PATH_add .cabal-sandbox/bin
-}

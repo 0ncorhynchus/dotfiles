@@ -1,18 +1,9 @@
-DOTFILES_EXCLUDES = .git .gitmodules
-DOTFILES_TARGETS  = $(wildcard .??*)
-DOTFILES_DIR      = $(PWD)
-DOTFILES_FILES    = $(filter-out $(DOTFILES_EXCLUDES) ,$(DOTFILES_TARGETS))
-SYSTEMD_FILES     = $(notdir $(wildcard systemd/*))
+DOTFILES = .tmux.conf .vim .vimrc .zshrc
 
-update:
-	git pull origin master
-	git submodule init
-	git submodule update
-	#git submodule foreach git pull origin master
+.PHONY: deploy clean
 
 deploy:
-	@$(foreach f, $(DOTFILES_FILES), ln -sfnv $(abspath $(f)) $(HOME)/$(f);)
-	@$(foreach f, $(SYSTEMD_FILES), ln -sfnv $(abspath $(f)) $(HOME)/.config/systemd/user/$(f);)
+	@$(foreach f, $(DOTFILES), ln -sfnv $(abspath $(f)) $(HOME)/$(f);)
 
 clean:
-	@$(foreach f, $(DOTFILES_FILES), rm $(HOME)/$(f);)
+	@$(foreach f, $(DOTFILES), rm $(HOME)/$(f);)
