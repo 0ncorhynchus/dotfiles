@@ -1,5 +1,5 @@
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/defx.nvim'
 
 [[plugins]]
 repo = 't9md/vim-choosewin'
@@ -39,9 +39,6 @@ repo = 'mustache/vim-mustache-handlebars'
 
 [[plugins]]
 repo = 'rhysd/vim-clang-format'
-
-[[plugins]]
-repo = '0ncorhynchus/ecell.vim'
 
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
