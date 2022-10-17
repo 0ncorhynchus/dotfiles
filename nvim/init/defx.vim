@@ -36,7 +36,7 @@ endfunction
 augroup user_plugin_defx
   autocmd!
   autocmd FileType defx call <SID>defx_mappings()
-  autocmd BufNewFile,BufRead * Defx `getcwd()` -no-focus -search=`expand('%:p')`
+  autocmd BufEnter,BufNewFile,BufRead * Defx `getcwd()` -no-focus -search=`expand('%:p')`
 augroup END
 
 function! s:defx_mappings() abort
